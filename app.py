@@ -1,4 +1,6 @@
-﻿from flask import Flask, request, jsonify, render_template_string
+# -*- coding: utf-8 -*-
+
+from flask import Flask, request, jsonify, render_template_string
 from datetime import datetime
 import os
 import requests
@@ -9,7 +11,7 @@ ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "Jolleyleads@gmail.com")
 MAKE_WEBHOOK_URL = os.getenv("MAKE_WEBHOOK_URL", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
-HOME_HTML = """
+HTML = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,160 +19,113 @@ HOME_HTML = """
 <title>James Jolley Foundation | Turning Losses Into Lifelines</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-:root{--navy:#071522;--navy2:#0a1d2f;--gold:#d4af37;--gold2:#f5d76e;--card:#111f33;}
-*{box-sizing:border-box}
-body{margin:0;background:var(--navy2);color:white;font-family:Arial,Helvetica,sans-serif}
-header{background:#06111f;padding:22px 30px;border-bottom:4px solid var(--gold);position:sticky;top:0;z-index:10}
-.wrap{max-width:1150px;margin:auto}
-.top{display:flex;justify-content:space-between;align-items:center;gap:20px}
-.brand strong{color:var(--gold);font-size:24px}
-.brand span{display:block;color:#ddd;font-size:13px}
-nav a{color:white;text-decoration:none;margin-left:14px;font-weight:bold}
-nav a:hover{color:var(--gold)}
-.hero{padding:75px 30px}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}
-.badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:8px 14px;border-radius:999px;margin-bottom:18px}
-h1{font-size:58px;line-height:1.05;color:var(--gold);margin:0 0 18px}
-h2{color:var(--gold);font-size:30px}
-p{font-size:18px;line-height:1.65}
-.lead{font-size:22px;color:#f3f3f3}
-.btn{display:inline-block;background:var(--gold);color:#06111f;padding:14px 24px;border-radius:10px;font-weight:bold;text-decoration:none;margin:8px 8px 8px 0}
-.btn.outline{background:transparent;color:var(--gold);border:2px solid var(--gold)}
-.card{background:rgba(17,31,51,.94);border:1px solid rgba(212,175,55,.75);border-radius:18px;padding:26px;margin:24px 0;box-shadow:0 15px 45px rgba(0,0,0,.28)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.logo-circle{width:180px;height:180px;border-radius:50%;border:5px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:auto;background:#071522;color:var(--gold);font-size:52px;font-weight:bold}
-section{padding:25px 30px}
-input,textarea,select{width:100%;padding:14px;border:0;border-radius:8px;margin:8px 0;font-size:16px}
-textarea{min-height:130px}
-button{background:var(--gold);color:#071522;padding:14px 24px;border:0;border-radius:10px;font-weight:bold;cursor:pointer;font-size:16px}
-.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-footer{background:#06111f;border-top:4px solid var(--gold);padding:35px;text-align:center;margin-top:40px}
+body{margin:0;background:#0a1d2f;color:white;font-family:Arial,Helvetica,sans-serif}
+header{background:#06111f;padding:24px;border-bottom:4px solid #d4af37}
+nav a{color:white;margin-right:16px;text-decoration:none;font-weight:bold}
+nav a:hover{color:#d4af37}
+.wrap{max-width:1100px;margin:auto;padding:35px}
+.hero{padding:55px 0}
+h1{color:#d4af37;font-size:54px;line-height:1.05;margin:0 0 18px}
+h2{color:#d4af37}
+p{font-size:18px;line-height:1.6}
+.card{background:#111f33;border:1px solid #d4af37;border-radius:14px;padding:24px;margin:22px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.btn{display:inline-block;background:#d4af37;color:#06111f;padding:14px 22px;border-radius:8px;text-decoration:none;font-weight:bold;margin:8px 8px 8px 0}
+.btn2{background:transparent;color:#d4af37;border:2px solid #d4af37}
+input,select,textarea{width:100%;padding:13px;margin:8px 0;border-radius:7px;border:0;font-size:16px}
+textarea{min-height:120px}
+button{background:#d4af37;color:#06111f;padding:14px 22px;border:0;border-radius:8px;font-weight:bold;cursor:pointer}
+footer{background:#06111f;border-top:4px solid #d4af37;text-align:center;padding:30px;margin-top:40px}
 .small{font-size:14px;color:#ccc}
-@media(max-width:850px){.hero-grid{grid-template-columns:1fr}h1{font-size:42px}nav{display:none}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap top">
-    <div class="brand">
-      <strong>James Jolley Foundation</strong>
-      <span>Turning Losses Into Lifelines</span>
-    </div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="#story">Story</a>
-      <a href="#donate">Donate</a>
-      <a href="#help">Get Help</a>
-      <a href="#partner">Partner</a>
-      <a href="/health">Health</a>
-    </nav>
-  </div>
+<strong>James Jolley Foundation</strong> - Turning Losses Into Lifelines
+<nav>
+<a href="/">Home</a>
+<a href="#donate">Donate</a>
+<a href="#help">Get Help</a>
+<a href="#partner">Partner</a>
+<a href="/health">System Check</a>
+</nav>
 </header>
 
-<main>
+<div class="wrap">
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="badge">DOE Agentic Nonprofit Platform</span>
-      <h1>Turning Losses Into Lifelines</h1>
-      <p class="lead">The James Jolley Foundation helps teenagers access addiction treatment immediately when insurance delays, Medicaid approval, or lack of funds stand in the way.</p>
-      <a class="btn" href="#donate">Donate Now</a>
-      <a class="btn outline" href="#help">Get Help</a>
-    </div>
-    <div class="card" style="text-align:center">
-      <div class="logo-circle">JJF</div>
-      <h2>Every Hour Matters</h2>
-      <p>No parent should lose a child because of paperwork, insurance delays, or lack of immediate treatment access.</p>
-    </div>
-  </div>
+<h1>Turning Losses Into Lifelines</h1>
+<p>The James Jolley Foundation helps teenagers access addiction treatment immediately when insurance delays, Medicaid approval, or lack of funds stand in the way.</p>
+<a class="btn" href="#donate">Donate Now</a>
+<a class="btn btn2" href="#help">Get Help</a>
 </section>
 
-<section id="story">
-  <div class="wrap card">
-    <h2>Why This Foundation Exists</h2>
-    <p>James Jolley was only 17 when he passed away from an accidental fentanyl overdose. He was scheduled to enter rehab just two days later, but Medicaid approval was still pending. That waiting period cost him his life.</p>
-    <p>The James Jolley Foundation exists to help eliminate that dangerous gap for other teenagers by helping families access treatment faster.</p>
-  </div>
-</section>
+<div class="card">
+<h2>Why This Foundation Exists</h2>
+<p>James Jolley was only 17 when he passed away from an accidental fentanyl overdose. He was scheduled to enter rehab just two days later, but Medicaid approval was still pending. That waiting period cost him his life.</p>
+<p>The foundation exists to help eliminate that dangerous gap for other teenagers by helping families access treatment faster.</p>
+</div>
 
-<section>
-  <div class="wrap">
-    <h2>DOE Framework</h2>
-    <div class="grid">
-      <div class="card"><h2>D - Directives</h2><p>Save lives, accept donations, capture urgent help requests, support families, and grow the foundation.</p></div>
-      <div class="card"><h2>O - Orchestration</h2><p>Route each submission into the correct workflow: family help, donor, volunteer, partner, media, or outreach.</p></div>
-      <div class="card"><h2>E - Execution</h2><p>Notify the admin, send data to Make.com, prepare AI classification, and create follow-up actions.</p></div>
-    </div>
-  </div>
-</section>
+<h2>DOE Framework</h2>
+<div class="grid">
+<div class="card"><h2>D - Directives</h2><p>Save lives, accept donations, capture help requests, support families, and grow the mission.</p></div>
+<div class="card"><h2>O - Orchestration</h2><p>Route each submission to the right workflow: family help, donor, volunteer, partner, sponsor, media, or outreach.</p></div>
+<div class="card"><h2>E - Execution</h2><p>Notify the admin, prepare records, trigger Make.com, classify urgency, and create follow-up actions.</p></div>
+</div>
 
-<section id="donate">
-  <div class="wrap card">
-    <h2>Donate</h2>
-    <p>Donations support emergency rehab admission help, transportation to treatment, temporary treatment gap coverage, family support resources, and youth addiction recovery advocacy.</p>
-    <form action="/api/intake" method="post">
-      <input type="hidden" name="type" value="donation_interest">
-      <div class="form-grid">
-        <input name="name" placeholder="Your Name">
-        <input name="email" placeholder="Email">
-        <select name="amount">
-          <option>$25</option><option>$50</option><option>$100</option><option>$250</option><option>$500</option><option>Custom</option>
-        </select>
-      </div>
-      <textarea name="message" placeholder="Optional message"></textarea>
-      <button type="submit">Submit Donation Interest</button>
-    </form>
-  </div>
-</section>
+<div class="card" id="donate">
+<h2>Donate</h2>
+<p>Donations support emergency rehab admission help, transportation to treatment, temporary treatment gap coverage, family resources, and youth addiction recovery advocacy.</p>
+<form action="/api/intake" method="post">
+<input type="hidden" name="type" value="donation_interest">
+<input name="name" placeholder="Your Name">
+<input name="email" placeholder="Email">
+<select name="amount">
+<option>$25</option><option>$50</option><option>$100</option><option>$250</option><option>$500</option><option>Custom</option>
+</select>
+<textarea name="message" placeholder="Optional message"></textarea>
+<button type="submit">Submit Donation Interest</button>
+</form>
+</div>
 
-<section id="help">
-  <div class="wrap card">
-    <h2>Get Help</h2>
-    <p>If your teenager needs treatment support now, submit this request. The DOE backend will classify the request, score urgency, and prepare routing for Make.com and admin follow-up.</p>
-    <form action="/api/intake" method="post">
-      <input type="hidden" name="type" value="family_help_request">
-      <div class="form-grid">
-        <input name="name" placeholder="Parent / Guardian Name" required>
-        <input name="email" placeholder="Email">
-        <input name="phone" placeholder="Phone">
-        <select name="urgency">
-          <option value="urgent">Urgent</option>
-          <option value="normal">Normal</option>
-          <option value="information_only">Information Only</option>
-        </select>
-      </div>
-      <textarea name="message" placeholder="Briefly explain what is happening" required></textarea>
-      <button type="submit">Request Help</button>
-    </form>
-  </div>
-</section>
+<div class="card" id="help">
+<h2>Get Help</h2>
+<p>If your teenager needs treatment support now, submit this request. The DOE backend will classify it and prepare routing.</p>
+<form action="/api/intake" method="post">
+<input type="hidden" name="type" value="family_help_request">
+<input name="name" placeholder="Parent or Guardian Name" required>
+<input name="email" placeholder="Email">
+<input name="phone" placeholder="Phone">
+<select name="urgency">
+<option value="urgent">Urgent</option>
+<option value="normal">Normal</option>
+<option value="information_only">Information Only</option>
+</select>
+<textarea name="message" placeholder="Briefly explain what is happening" required></textarea>
+<button type="submit">Request Help</button>
+</form>
+</div>
 
-<section id="partner">
-  <div class="wrap card">
-    <h2>Partner / Volunteer / Media</h2>
-    <p>Use this form for churches, businesses, treatment centers, sponsors, reporters, volunteers, and community partners.</p>
-    <form action="/api/intake" method="post">
-      <input type="hidden" name="type" value="partner_or_outreach">
-      <div class="form-grid">
-        <input name="name" placeholder="Name / Organization" required>
-        <input name="email" placeholder="Email">
-        <input name="phone" placeholder="Phone">
-        <select name="category">
-          <option>Partner</option><option>Volunteer</option><option>Sponsor</option><option>Media</option><option>Treatment Center</option><option>Church</option>
-        </select>
-      </div>
-      <textarea name="message" placeholder="How would you like to help?"></textarea>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-</section>
-</main>
+<div class="card" id="partner">
+<h2>Partner, Volunteer, Sponsor, or Media</h2>
+<form action="/api/intake" method="post">
+<input type="hidden" name="type" value="partner_or_outreach">
+<input name="name" placeholder="Name or Organization" required>
+<input name="email" placeholder="Email">
+<input name="phone" placeholder="Phone">
+<select name="category">
+<option>Partner</option><option>Volunteer</option><option>Sponsor</option><option>Media</option><option>Treatment Center</option><option>Church</option>
+</select>
+<textarea name="message" placeholder="How would you like to help?"></textarea>
+<button type="submit">Submit</button>
+</form>
+</div>
+</div>
 
 <footer>
-  <p><strong>James Jolley Foundation</strong></p>
-  <p>Turning Losses Into Lifelines</p>
-  <p class="small">Admin: Jolleyleads@gmail.com</p>
+<p><strong>James Jolley Foundation</strong></p>
+<p>Turning Losses Into Lifelines</p>
+<p class="small">Admin: Jolleyleads@gmail.com</p>
 </footer>
 
 </body>
@@ -182,7 +137,7 @@ def classify_submission(data):
     submission_type = data.get("type", "general")
     urgency = data.get("urgency", "normal")
 
-    urgent_words = ["overdose", "today", "now", "urgent", "fentanyl", "detox", "rehab", "suicidal", "danger"]
+    urgent_words = ["overdose", "today", "now", "urgent", "fentanyl", "detox", "rehab", "danger"]
     if submission_type == "family_help_request" or any(word in message for word in urgent_words):
         urgency = "urgent"
 
@@ -198,14 +153,13 @@ def classify_submission(data):
     return {
         "category": category,
         "urgency": urgency,
-        "next_action": "Notify admin, save record, and trigger Make.com workflow.",
-        "summary": str(data.get("message", ""))[:700]
+        "summary": str(data.get("message", ""))[:700],
+        "next_action": "Notify admin, send to Make.com if connected, and create follow-up task."
     }
 
 def send_to_make(payload):
     if not MAKE_WEBHOOK_URL:
         return {"sent": False, "reason": "MAKE_WEBHOOK_URL not configured yet"}
-
     try:
         response = requests.post(MAKE_WEBHOOK_URL, json=payload, timeout=10)
         return {"sent": True, "status_code": response.status_code}
@@ -214,7 +168,7 @@ def send_to_make(payload):
 
 @app.route("/")
 def home():
-    return render_template_string(HOME_HTML)
+    return render_template_string(HTML)
 
 @app.route("/health")
 def health():
@@ -250,18 +204,17 @@ def intake():
     make_result = send_to_make(payload)
 
     if request.form:
-        return f"""
+        return render_template_string("""
         <html>
         <body style="background:#0a1d2f;color:white;font-family:Arial;padding:45px">
         <h1 style="color:#d4af37">Request Received</h1>
         <p>Your request has been received by the James Jolley Foundation DOE Command Center.</p>
-        <p><b>Category:</b> {classification["category"]}</p>
-        <p><b>Urgency:</b> {classification["urgency"]}</p>
-        <p><b>Make.com:</b> {make_result}</p>
+        <p><b>Category:</b> {{ category }}</p>
+        <p><b>Urgency:</b> {{ urgency }}</p>
         <a style="color:#d4af37;font-weight:bold" href="/">Return Home</a>
         </body>
         </html>
-        """
+        """, category=classification["category"], urgency=classification["urgency"])
 
     return jsonify({
         "success": True,
@@ -273,7 +226,6 @@ def intake():
 @app.route("/api/outreach", methods=["POST"])
 def outreach():
     data = request.get_json(silent=True) or {}
-
     payload = {
         "received_at": datetime.utcnow().isoformat(),
         "type": "outreach_monster",
@@ -284,28 +236,19 @@ def outreach():
             "day_2": "Short follow-up",
             "day_5": "Mission-based follow-up",
             "day_10": "Final respectful follow-up"
-        },
-        "next_action": "Create outreach sequence and stop if replied, donated, partnered, or opted out."
+        }
     }
-
     make_result = send_to_make(payload)
-
-    return jsonify({
-        "success": True,
-        "message": "Outreach Monster endpoint received payload.",
-        "payload": payload,
-        "make": make_result
-    })
+    return jsonify({"success": True, "payload": payload, "make": make_result})
 
 @app.errorhandler(Exception)
 def handle_error(error):
     return jsonify({
         "success": False,
         "error": str(error),
-        "message": "DOE backend error captured instead of crashing."
+        "message": "DOE backend error captured."
     }), 500
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-

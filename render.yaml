@@ -1,10 +1,10 @@
-services:
+﻿services:
   - type: web
     name: thejamesjolleyfoundation
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
     envVars:
       - key: ADMIN_EMAIL
         value: Jolleyleads@gmail.com
