@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: thejamesjolleyfoundation
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: ADMIN_EMAIL
+        value: Jolleyleads@gmail.com
+      - key: MAKE_WEBHOOK_URL
+        value: 
+      - key: OPENAI_API_KEY
+        value: 
