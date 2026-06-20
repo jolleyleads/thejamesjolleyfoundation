@@ -66,11 +66,11 @@ footer{background:#06111f;border-top:4px solid #d4af37;text-align:center;padding
 <p>The foundation exists to help eliminate that dangerous gap for other teenagers by helping families access treatment faster.</p>
 </div>
 
-<h2>How The Foundation Works</h2>
+<h2>DOE Framework</h2>
 <div class="grid">
-<div class="card"><h2>Our Directive</h2><p>Save lives by helping teenagers access treatment faster when insurance delays, Medicaid approval, or lack of funds stand in the way.</p></div>
-<div class="card"><h2>Our Organization</h2><p>Route every request to the right next step: urgent family help, donor support, volunteers, partners, sponsors, media, or outreach.</p></div>
-<div class="card"><h2>Our Execution</h2><p>Notify, track, automate, and follow up so no family, donor, volunteer, or partner gets lost in messages.</p></div>
+<div class="card"><h2>D - Directives</h2><p>Save lives, accept donations, capture help requests, support families, and grow the mission.</p></div>
+<div class="card"><h2>O - Orchestration</h2><p>Route each submission to the right workflow: family help, donor, volunteer, partner, sponsor, media, or outreach.</p></div>
+<div class="card"><h2>E - Execution</h2><p>Notify the admin, prepare records, trigger Make.com, classify urgency, and create follow-up actions.</p></div>
 </div>
 
 <div class="card" id="donate">
