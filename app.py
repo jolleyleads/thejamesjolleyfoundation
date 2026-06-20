@@ -98,9 +98,9 @@ footer{background:#06111f;border-top:4px solid var(--gold);padding:35px;text-ali
   <div class="wrap">
     <h2>DOE Framework</h2>
     <div class="grid">
-      <div class="card"><h2>D — Directives</h2><p>Save lives, accept donations, capture urgent help requests, support families, and grow the foundation.</p></div>
-      <div class="card"><h2>O — Orchestration</h2><p>Route each submission into the correct workflow: family help, donor, volunteer, partner, media, or outreach.</p></div>
-      <div class="card"><h2>E — Execution</h2><p>Notify the admin, send data to Make.com, prepare AI classification, and create follow-up actions.</p></div>
+      <div class="card"><h2>D - Directives</h2><p>Save lives, accept donations, capture urgent help requests, support families, and grow the foundation.</p></div>
+      <div class="card"><h2>O - Orchestration</h2><p>Route each submission into the correct workflow: family help, donor, volunteer, partner, media, or outreach.</p></div>
+      <div class="card"><h2>E - Execution</h2><p>Notify the admin, send data to Make.com, prepare AI classification, and create follow-up actions.</p></div>
     </div>
   </div>
 </section>
