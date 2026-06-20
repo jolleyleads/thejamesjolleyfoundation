@@ -9,6 +9,6 @@ services:
       - key: ADMIN_EMAIL
         value: Jolleyleads@gmail.com
       - key: MAKE_WEBHOOK_URL
-        value: 
+        value: ""
       - key: OPENAI_API_KEY
-        value: 
+        value: ""

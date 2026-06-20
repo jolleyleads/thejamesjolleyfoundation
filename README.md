@@ -2,7 +2,7 @@
 
 Turning Losses Into Lifelines
 
-This is a real backend-powered nonprofit website, not just a static flyer.
+This is a backend-powered nonprofit website, not a static flyer.
 
 ## Routes
 
