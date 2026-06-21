@@ -57,9 +57,27 @@ h2{color:#f1d27a;font-size:2.4rem}
 <div class="box"><h3>Donor Transparency</h3><p>Clear systems for donations, impact updates, and growth.</p></div>
 </div>
 </section>
+<section class="section" id="donate">
+<h2>Donate</h2>
+<p>Your donation helps support teenagers and families trying to access treatment before it is too late.</p>
+<a class="primary" href="mailto:jolleyleads@gmail.com?subject=James Jolley Foundation Donation">Donate / Ask How to Help</a>
+</section>
+
+<section class="section" id="help">
+<h2>Get Help</h2>
+<p>If your teenager needs help getting into treatment, contact us now. The goal is to close the gap before a delay becomes a tragedy.</p>
+<a class="primary" href="mailto:jolleyleads@gmail.com?subject=Family Needs Help">Request Help</a>
+</section>
+
+<section class="section" id="contact">
+<h2>Contact Us</h2>
+<p>Email the James Jolley Foundation for donations, partnerships, volunteer help, or family support.</p>
+<a class="primary" href="mailto:jolleyleads@gmail.com?subject=James Jolley Foundation Contact">Email Us</a>
+</section>
 </body>
 </html>
 """
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
