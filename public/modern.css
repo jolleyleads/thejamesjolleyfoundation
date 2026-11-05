@@ -62,3 +62,30 @@ h1 em{color:#f0cb8e;font-style:italic}.hero-copy{max-width:550px;font-size:1.09r
 .gallery-link-copy small{color:#5c6d7c;font-size:.9rem}.gallery-link-action{color:#a4773a;font-weight:700;font-size:.87rem;margin-top:7px}
 .foundation-contact{line-height:1.8}.foundation-contact a{display:inline-block;color:#f0ce88}
 @media(max-width:720px){.gallery-links{grid-template-columns:1fr}.gallery-link-image{height:220px}.gallery-link-copy{padding:24px}}
+
+/* Premium mobile-first polish and embedded memorial galleries */
+html{scroll-padding-top:90px}body{overflow-x:clip}img,video{max-width:100%}main{min-width:0}.wrap{max-width:1210px}
+h1,h2,h3{overflow-wrap:break-word}.support{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.homepage-slides-section{background:linear-gradient(155deg,#0b2135,#061320);padding:90px 0 110px;color:#fff}
+.homepage-slides-section .eyebrow{color:#e7c38b}.homepage-slides-section h2{font-size:clamp(2.1rem,4.2vw,3.65rem);max-width:790px;margin:12px 0 40px}
+.home-slideshow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start}
+.home-gallery{min-width:0;border:1px solid #c5a77850;border-radius:8px;background:#ffffff08;overflow:hidden;box-shadow:0 28px 70px #0002}
+.home-gallery-heading{padding:26px 27px 6px}.home-gallery-heading h3{font-size:clamp(1.5rem,2.5vw,2rem);margin:0 0 9px;color:#f4dfb7}.home-gallery-heading p{color:#bfd0db;font-size:.92rem}
+.home-gallery .slider{min-width:0;padding:0 16px 21px}
+.home-gallery .photo-stage{position:relative;overflow:hidden;background:radial-gradient(ellipse at center,#264054,#081321 75%);border:1px solid #ddbd7b37;border-radius:5px;height:clamp(320px,38vw,530px);touch-action:pan-y;user-select:none}
+.home-gallery .gallery-slide{position:absolute;inset:0;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}
+.home-gallery .gallery-slide[hidden]{display:none}
+.home-gallery .gallery-slide img{display:block;width:100%;height:calc(100% - 60px);object-fit:contain;object-position:center;max-width:100%}
+.home-gallery .gallery-slide figcaption{flex:0 0 60px;display:flex;justify-content:center;align-items:center;padding:9px 15px;font-size:.8rem;text-align:center;color:#e7e9ec;line-height:1.35}
+.home-gallery .gallery-controls{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:15px}
+.home-gallery .gallery-controls button{border:1px solid #c8d4de65;background:transparent;color:#f1f5f7;border-radius:30px;padding:10px 14px;min-height:44px;font:600 .81rem 'DM Sans',sans-serif;cursor:pointer;touch-action:manipulation}
+.home-gallery .gallery-controls button:hover,.home-gallery .gallery-controls button:focus-visible{background:#e9c181;color:#11263b}
+.home-gallery .gallery-center{display:flex;align-items:center;gap:9px;min-width:0}.home-gallery .gallery-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.home-gallery .gallery-dot{width:10px;height:10px;min-height:10px!important;padding:0!important;border-radius:50%!important;border:1px solid #f4e2bd!important;opacity:.5}
+.home-gallery .gallery-dot.active{background:#efcb8d;opacity:1}
+.home-gallery .gallery-caption{text-align:center;color:#b7c8d8;font-size:.82rem;min-height:1.4em;margin:12px 0 0}
+.home-gallery .photo-notice{text-align:center;color:#ead6b4}
+@media(max-width:1150px){.menu{display:block}.links{display:none;position:absolute;top:82px;left:0;right:0;max-height:calc(100svh - 82px);overflow-y:auto;background:#071522;padding:18px 24px 26px;flex-direction:column;align-items:stretch;gap:0;box-shadow:0 15px 26px #0005}.links.open{display:flex}.links a{padding:12px 0;font-size:1rem}.links .nav-give{text-align:center;margin-top:8px}.nav{position:relative}.home-slideshow-grid{gap:17px}}
+@media(max-width:850px){.home-slideshow-grid{grid-template-columns:1fr;max-width:700px;margin:auto}.home-gallery .photo-stage{height:min(66svh,580px);min-height:350px}.hero-inner{gap:12px}.split{grid-template-columns:1fr;gap:36px}.cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))}}
+@media(max-width:720px){.links{top:74px;max-height:calc(100svh - 74px)}.homepage-slides-section{padding:68px 0 78px}.home-gallery-heading{padding:24px 19px 5px}.home-gallery .slider{padding:0 11px 17px}.home-gallery .photo-stage{height:min(65svh,530px);min-height:345px}.home-gallery .gallery-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px}.home-gallery .gallery-prev,.home-gallery .gallery-next{width:100%}.home-gallery .gallery-center{grid-column:1/-1;grid-row:2;justify-content:space-between}.home-gallery .gallery-dots{flex:1}.home-gallery .gallery-caption{margin-top:11px}.home-gallery .gallery-slide figcaption{font-size:.74rem}.hero .actions{align-items:stretch}.hero .actions .btn{width:100%;max-width:330px;margin-inline:auto}.memory-grid img{height:auto;max-height:460px;aspect-ratio:4/5;object-fit:contain;background:#152c3f}.support-card{padding:27px}.obituary-photo img{max-height:480px;height:auto;aspect-ratio:4/5}.gallery-link-image img{object-fit:contain}.gallery-link-image{background:#102538}}
+@media(max-width:390px){.home-gallery .gallery-controls button{font-size:.77rem;padding:9px 7px}.home-gallery .gallery-dots{gap:5px}.home-gallery .gallery-dot{width:9px;height:9px}}
