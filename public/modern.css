@@ -32,3 +32,7 @@ h1 em{color:#f0cb8e;font-style:italic}.hero-copy{max-width:550px;font-size:1.09r
 @media(max-width:960px){.hero-inner{gap:18px}.cover-stage{min-height:390px;padding:10px}.cover-logo{max-height:420px}}
 @media(max-width:720px){.nav{min-height:74px}.links{top:74px}.hero-inner{grid-template-columns:1fr;min-height:0;text-align:center;padding:62px 0 85px;gap:15px}.hero-kicker{display:block}h1{font-size:clamp(3.25rem,11vw,4.6rem)}.hero-copy{margin:auto}.hero-meta{justify-content:center;margin-top:30px}.cover-stage{min-height:300px;max-width:440px;margin:auto;width:100%;padding:6px 20px}.cover-logo{max-height:380px}.cover-plate{bottom:0;font-size:.59rem;letter-spacing:.1em}.section{padding:72px 0}.memory-grid img{height:340px}.missionline{font-size:.65rem;padding:16px 12px}.brandname{font-size:.78rem}}
 @media(prefers-reduced-motion:reduce){.feature{transition:none}}
+
+/* Editorial news coverage */
+.press-coverage{background:#e9edf0}.press-coverage .intro{max-width:670px}.news-feature{margin-top:32px;max-width:920px;background:#fff;border-top:4px solid #c19856;padding:clamp(27px,4vw,52px);box-shadow:0 22px 60px #09182713;border-radius:3px}
+.news-feature h3{font-size:clamp(1.7rem,3vw,2.45rem);max-width:760px;line-height:1.25;margin:15px 0 20px}.news-feature p{color:#56677a;max-width:710px;margin-bottom:28px}
