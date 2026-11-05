@@ -39,3 +39,15 @@ h1 em{color:#f0cb8e;font-style:italic}.hero-copy{max-width:550px;font-size:1.09r
 
 /* Clean unnumbered sections */
 .feature-label{display:inline-block;font-size:.74rem;letter-spacing:.18em;font-weight:700;color:#ad7e3f;text-transform:uppercase}.step{padding-top:26px}.step h3{margin-top:0}
+
+/* Dedicated obituary tribute */
+.obituary-section{background:#faf8f3}
+.obituary-grid{display:grid;grid-template-columns:minmax(270px,.78fr) minmax(0,1.22fr);gap:clamp(32px,6vw,88px);align-items:start}
+.obituary-photo{position:sticky;top:115px;background:#102439;padding:15px;box-shadow:0 25px 55px #07152520}
+.obituary-photo img{display:block;width:100%;height:min(630px,65vw);object-fit:contain;object-position:center;background:#172c41}
+.obituary-dates{text-align:center;color:#f1d49d;letter-spacing:.08em;font-size:.75rem;font-weight:700;padding:18px 6px 6px}
+.obituary-copy h2{margin-bottom:8px}.obituary-subtitle{font-family:'Playfair Display',Georgia,serif;color:#9a713f;font-size:1.25rem;margin-bottom:28px}
+.obituary-copy p{font-size:1rem;line-height:1.91;color:#465668;margin-bottom:21px}
+.obituary-copy .obituary-source{font-size:.86rem;color:#667589;border-top:1px solid #dfd7c7;padding-top:22px;margin-top:28px}
+.obituary-copy .btn{margin-top:7px}
+@media(max-width:800px){.obituary-grid{grid-template-columns:1fr;gap:30px}.obituary-photo{position:static;max-width:520px;margin:auto;width:100%}.obituary-photo img{height:410px}.obituary-copy h2{font-size:2.65rem}}
