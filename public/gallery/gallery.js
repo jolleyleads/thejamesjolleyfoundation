@@ -6,7 +6,7 @@ const galleries={
 for(const [name,photos] of Object.entries(galleries)){
 const wrap=document.querySelector('[data-gallery="'+name+'"]');if(!wrap)continue;
 const viewport=wrap.querySelector('.photo-stage'),dots=wrap.querySelector('.gallery-dots'),live=wrap.querySelector('.gallery-caption');
-let current=0,timer=null,playing=true;
+let current=0,timer=null,playing=true,inView=true;const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
 const slides=[];
 photos.forEach(([filename,label],index)=>{
  const slide=document.createElement('figure');slide.className='gallery-slide';slide.hidden=index!==0;
@@ -24,17 +24,20 @@ function show(index,reset){
  if(reset)restart();
 }
 function stop(){clearInterval(timer);timer=null;}
-function play(){stop();if(playing&&!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(()=>show(current+1,false),6500)}
+function play(){stop();if(playing&&inView&&!document.hidden&&!motion.matches)timer=setInterval(()=>show(current+1,false),5500)}
 function restart(){if(playing)play()}
 wrap.querySelector('.gallery-prev').addEventListener('click',()=>show(current-1,true));
 wrap.querySelector('.gallery-next').addEventListener('click',()=>show(current+1,true));
 const toggle=wrap.querySelector('.gallery-play');
 toggle.addEventListener('click',()=>{playing=!playing;toggle.textContent=playing?'Pause':'Play';toggle.setAttribute('aria-label',playing?'Pause slideshow':'Play slideshow');playing?play():stop()});
-let startX=null;viewport.addEventListener('touchstart',e=>startX=e.changedTouches[0].clientX,{passive:true});
-viewport.addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>45)show(current+(dx<0?1:-1),true);startX=null},{passive:true});
+let startX=null,startY=null;viewport.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX;startY=e.changedTouches[0].clientY},{passive:true});
+viewport.addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;if(Math.abs(dx)>42&&Math.abs(dx)>Math.abs(dy)*1.25)show(current+(dx<0?1:-1),true);startX=null;startY=null},{passive:true});
+let mouseX=null;viewport.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')mouseX=e.clientX});viewport.addEventListener('pointerup',e=>{if(mouseX===null)return;const dx=e.clientX-mouseX;if(Math.abs(dx)>60)show(current+(dx<0?1:-1),true);mouseX=null});
 wrap.addEventListener('mouseenter',stop);wrap.addEventListener('mouseleave',play);
 wrap.addEventListener('focusin',stop);wrap.addEventListener('focusout',play);
 document.addEventListener('visibilitychange',()=>document.hidden?stop():play());
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;inView?play():stop()},{threshold:.15});observer.observe(wrap)}
+if(motion.addEventListener)motion.addEventListener('change',()=>play());
 show(0,false);play();
 }
 })();
