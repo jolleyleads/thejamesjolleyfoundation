@@ -1,0 +1,34 @@
+
+/* Modern foundation visual system */
+:root{--gold:#e8bb72;--gold2:#b88a47;--light:#f6f6f3;--max:1210px}
+html{scroll-padding-top:88px}body{background:#f6f6f3;color:#1d2b3b;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url('/public/brand/james-jolley-foundation-v4.png') center/ min(70vw,700px) auto no-repeat;opacity:var(--ambient,.02)}
+header,main,footer,.topline{position:relative}
+header{background:#071421ed;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 12px 35px #07111e35}
+.nav{min-height:82px}.brand-logo{width:46px;height:46px;object-fit:contain;border-radius:50%;background:#eadfc9;flex-shrink:0}.brandname{letter-spacing:.055em}
+.links{gap:25px}.links .nav-give{background:#eac17b;color:#111e2d;padding:12px 20px;border-radius:3px}
+.btn{border-radius:3px;min-height:54px;padding:16px 25px;gap:10px;box-shadow:0 10px 30px #07152220}
+.btn.gold{background:linear-gradient(125deg,#f5d8a0,#dbab5c);color:#111d2d}
+.hero{background:radial-gradient(ellipse at 76% 35%,#254861 0%,transparent 46%),linear-gradient(125deg,#07121d,#112c43);min-height:calc(100svh - 85px)}
+.hero:after{border-color:#edc68624}
+.hero-inner{min-height:700px;grid-template-columns:1.04fr .96fr;gap:45px;padding:80px 0 102px}
+.hero-intro{z-index:2}.hero-kicker{color:#e8c482;letter-spacing:.18em;font-size:.69rem;font-weight:700}
+.hero-overline{color:#dfebf2a6;text-transform:uppercase;letter-spacing:.12em;font-size:.76rem;margin:26px 0 0}
+h1{font-size:clamp(3.5rem,6.2vw,6.3rem);line-height:1.07;letter-spacing:-.056em;margin:14px 0 27px}
+h1 em{color:#f0cb8e;font-style:italic}.hero-copy{max-width:550px;font-size:1.09rem;line-height:1.85;color:#d1dce5}
+.hero .actions{margin-top:28px}.hero-meta{margin-top:48px;color:#d8c2a2;font-size:.67rem;letter-spacing:.15em;display:flex;flex-wrap:wrap;gap:15px}
+.cover-stage{position:relative;min-height:510px;display:flex;align-items:center;justify-content:center;padding:28px}
+.cover-stage:before{content:"";position:absolute;inset:9%;border:1px solid #e4c58551;border-radius:50%;box-shadow:0 0 0 32px #e4c58509,0 0 90px #e4c58518}
+.cover-logo{width:100%;max-width:540px;max-height:550px;object-fit:contain;position:relative;z-index:1;filter:drop-shadow(0 28px 50px #0008)}
+.cover-plate{position:absolute;bottom:10px;z-index:2;background:#071624e8;color:#f5d394;border:1px solid #e8c58670;letter-spacing:.16em;font-size:.7rem;font-weight:700;text-align:center;padding:13px 20px}
+.missionline{letter-spacing:.08em;font-size:.81rem}.section{padding:104px 0}.section h2{font-size:clamp(2.35rem,4.3vw,4rem)}
+.story-quote{background:linear-gradient(140deg,#122c42,#061321);border-left:3px solid #e8c17b;box-shadow:0 25px 55px #07182722}
+.feature{border:0;border-top:3px solid #c59b5e;box-shadow:0 18px 42px #0b253012;border-radius:3px}.feature:hover{transform:translateY(-4px)}
+.memory-grid{gap:22px}.memory-grid figure{overflow:hidden;border-radius:3px;box-shadow:0 20px 45px #0b22321a}
+.memory-grid img{width:100%;height:350px;object-fit:cover;object-position:center 35%;display:block}.memory-grid figure:nth-child(3) img{object-position:center 25%}
+.memory-grid figcaption{min-height:62px}.seal-content img{object-fit:contain}
+.support-card{box-shadow:0 18px 40px #0b223210}.banner{background:linear-gradient(135deg,#efd5a2,#d9b06c)}
+.banner-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.banner-outline{background:transparent!important;border:1px solid #162b3d;color:#162b3d!important}
+@media(max-width:960px){.hero-inner{gap:18px}.cover-stage{min-height:390px;padding:10px}.cover-logo{max-height:420px}}
+@media(max-width:720px){.nav{min-height:74px}.links{top:74px}.hero-inner{grid-template-columns:1fr;min-height:0;text-align:center;padding:62px 0 85px;gap:15px}.hero-kicker{display:block}h1{font-size:clamp(3.25rem,11vw,4.6rem)}.hero-copy{margin:auto}.hero-meta{justify-content:center;margin-top:30px}.cover-stage{min-height:300px;max-width:440px;margin:auto;width:100%;padding:6px 20px}.cover-logo{max-height:380px}.cover-plate{bottom:0;font-size:.59rem;letter-spacing:.1em}.section{padding:72px 0}.memory-grid img{height:340px}.missionline{font-size:.65rem;padding:16px 12px}.brandname{font-size:.78rem}}
+@media(prefers-reduced-motion:reduce){.feature{transition:none}}
